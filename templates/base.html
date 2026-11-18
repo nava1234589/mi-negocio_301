@@ -4,55 +4,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Negocio{% endblock %}</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f4f6f8; color: #333; }
-        header {
-            background: #1e293b; color: #fff; padding: 15px 30px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        header h1 { font-size: 22px; }
-        header nav a {
-            color: #fff; text-decoration: none; margin-left: 20px; font-weight: bold;
-        }
-        header nav a:hover { color: #38bdf8; }
-        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-        .card {
-            background: #fff; border-radius: 8px; padding: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 20px;
-        }
-        .btn {
-            display: inline-block; padding: 10px 16px; border-radius: 6px;
-            text-decoration: none; color: #fff; font-weight: bold; border: none;
-            cursor: pointer; font-size: 14px; margin: 2px;
-        }
-        .btn-primary { background: #2563eb; }
-        .btn-success { background: #16a34a; }
-        .btn-danger { background: #dc2626; }
-        .btn-warning { background: #d97706; }
-        .btn-secondary { background: #64748b; }
-        .btn:hover { opacity: 0.9; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e2e8f0; }
-        th { background: #f1f5f9; }
-        .messages { list-style: none; margin-bottom: 15px; }
-        .messages li { padding: 10px; border-radius: 6px; margin-bottom: 8px; }
-        .messages .success { background: #dcfce7; color: #166534; }
-        .messages .error { background: #fee2e2; color: #991b1b; }
-        footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; }
-        .form-control {
-        width: 100%; padding: 10px; margin-bottom: 12px;
-        border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px;
-        }
-        .form-check-input { margin-right: 8px; }
-        form label { font-weight: bold; display: block; margin-bottom: 4px; }
-        form p { margin-bottom: 12px; }
+    
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    </style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f8f2ff;
+        color: #49365f;
+    }
+
+    /* ENCABEZADO */
+    header {
+        background: linear-gradient(135deg, #7541a5, #a77bd0, #c9a6e8);
+        color: white;
+        padding: 22px 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: 0 4px 12px rgba(91, 47, 128, 0.2);
+    }
+
+    header h1 {
+        font-size: 27px;
+        font-weight: bold;
+    }
+
+    header nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 18px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    header nav a:hover {
+        color: #ffe5fa;
+    }
+
+    /* CONTENIDO */
+    .container {
+        max-width: 1150px;
+        margin: 35px auto;
+        padding: 0 20px;
+    }
+
+    h2 {
+        color: #7541a5;
+        margin-bottom: 22px;
+    }
+
+    h3 {
+        color: #8958b5;
+        margin-bottom: 12px;
+    }
+
+    /* TARJETAS */
+    .card {
+        background: white;
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 22px;
+        box-shadow: 0 5px 18px rgba(125, 83, 158, 0.12);
+        border: 1px solid #eadcf7;
+    }
+
+    .card h3 {
+        color: #8958b5;
+    }
+
+    /* BOTONES */
+    .btn {
+        display: inline-block;
+        padding: 11px 19px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 4px;
+        transition: 0.3s;
+    }
+
+    .btn-primary {
+        background: #8958b5;
+    }
+
+    .btn-success {
+        background: #a47acb;
+    }
+
+    .btn-danger {
+        background: #d47aaf;
+    }
+
+    .btn-warning {
+        background: #c49bdc;
+    }
+
+    .btn-secondary {
+        background: #927da5;
+    }
+
+    .btn:hover {
+        opacity: 0.85;
+        transform: translateY(-2px);
+    }
+
+    /* TABLAS */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 13px;
+        text-align: left;
+        border-bottom: 1px solid #eadcf7;
+    }
+
+    th {
+        background: #eadcf7;
+        color: #68418c;
+    }
+
+    tr:hover {
+        background: #faf6ff;
+    }
+
+    /* FORMULARIOS */
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 14px;
+        border: 1px solid #d9c2ed;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #fdfaff;
+        color: #49365f;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #8958b5;
+        box-shadow: 0 0 5px #d9b8f2;
+    }
+
+    form label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+        color: #68418c;
+    }
+
+    /* MENSAJES */
+    .messages {
+        list-style: none;
+        margin-bottom: 18px;
+    }
+
+    .messages li {
+        padding: 13px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+
+    .messages .success {
+        background: #eee2f8;
+        color: #68418c;
+    }
+
+    .messages .error {
+        background: #ffe4ee;
+        color: #a33b68;
+    }
+
+    /* PIE DE PÁGINA */
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: #927da5;
+        font-size: 14px;
+        margin-top: 30px;
+    }
+
+    /* LISTAS */
+    ul {
+        padding-left: 22px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    /* DISEÑO PARA CELULAR */
+    @media (max-width: 700px) {
+        header {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+
+        header nav a {
+            display: inline-block;
+            margin: 6px;
+        }
+
+        .container {
+            margin: 20px auto;
+        }
+
+        table {
+            font-size: 12px;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+    }
+</style>
+
 </head>
 <body>
     <header>
-        <h1>🛒 Mi Negocio</h1>
+        <h1>💜 Papelería Momita ✨</h1>
         <nav>
             <a href="{% url 'inicio' %}">Inicio</a>
             <a href="{% url 'lista_productos' %}">Productos</a>
@@ -84,7 +270,7 @@
     </div>
 
     <footer>
-        Proyecto Integrador - Software que Crece con tu Negocio &copy; {% now "Y" %}
+        💜 Papelería Momita | Hecho con amor y creatividad ✨
     </footer>
 </body>
 </html>
