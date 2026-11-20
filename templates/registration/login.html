@@ -1,15 +1,53 @@
 {% extends 'base.html' %}
-{% block title %}Iniciar Sesión{% endblock %}
+
+{% block title %}Iniciar sesión | Papelería Momita{% endblock %}
+
 {% block content %}
-<div class="card" style="max-width: 400px; margin: 0 auto;">
-    <h2>Iniciar Sesión</h2>
+
+<div class="card login-card">
+
+    <div class="page-heading">
+        <div>
+            <p class="breadcrumb">Inicio / Acceso</p>
+            <h2>Bienvenido a Momita 💜</h2>
+            <p>Ingresa tus datos para continuar.</p>
+        </div>
+    </div>
+
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Entrar</button>
+
+        {% for field in form %}
+            <p>
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+
+                {{ field }}
+
+                {% if field.help_text %}
+                    <small class="help-text">
+                        {{ field.help_text }}
+                    </small>
+                {% endif %}
+
+                {% for error in field.errors %}
+                    <small class="errorlist">{{ error }}</small>
+                {% endfor %}
+            </p>
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+            <div class="message error">
+                Usuario o contraseña incorrectos.
+            </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">
+            Iniciar sesión
+        </button>
     </form>
-    {% if form.errors %}
-        <p style="color: #dc2626; margin-top: 10px;">Usuario o contraseña incorrectos.</p>
-    {% endif %}
+
 </div>
+
 {% endblock %}

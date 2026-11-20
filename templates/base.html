@@ -1,277 +1,80 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Negocio{% endblock %}</title>
-    
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: 'Segoe UI', Arial, sans-serif;
-        background: #f8f2ff;
-        color: #49365f;
-    }
+    <title>{% block title %}Papelería Momita{% endblock %}</title>
 
-    /* ENCABEZADO */
-    header {
-        background: linear-gradient(135deg, #7541a5, #a77bd0, #c9a6e8);
-        color: white;
-        padding: 22px 35px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        box-shadow: 0 4px 12px rgba(91, 47, 128, 0.2);
-    }
-
-    header h1 {
-        font-size: 27px;
-        font-weight: bold;
-    }
-
-    header nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 18px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    header nav a:hover {
-        color: #ffe5fa;
-    }
-
-    /* CONTENIDO */
-    .container {
-        max-width: 1150px;
-        margin: 35px auto;
-        padding: 0 20px;
-    }
-
-    h2 {
-        color: #7541a5;
-        margin-bottom: 22px;
-    }
-
-    h3 {
-        color: #8958b5;
-        margin-bottom: 12px;
-    }
-
-    /* TARJETAS */
-    .card {
-        background: white;
-        border-radius: 18px;
-        padding: 24px;
-        margin-bottom: 22px;
-        box-shadow: 0 5px 18px rgba(125, 83, 158, 0.12);
-        border: 1px solid #eadcf7;
-    }
-
-    .card h3 {
-        color: #8958b5;
-    }
-
-    /* BOTONES */
-    .btn {
-        display: inline-block;
-        padding: 11px 19px;
-        border-radius: 12px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        margin: 4px;
-        transition: 0.3s;
-    }
-
-    .btn-primary {
-        background: #8958b5;
-    }
-
-    .btn-success {
-        background: #a47acb;
-    }
-
-    .btn-danger {
-        background: #d47aaf;
-    }
-
-    .btn-warning {
-        background: #c49bdc;
-    }
-
-    .btn-secondary {
-        background: #927da5;
-    }
-
-    .btn:hover {
-        opacity: 0.85;
-        transform: translateY(-2px);
-    }
-
-    /* TABLAS */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    th, td {
-        padding: 13px;
-        text-align: left;
-        border-bottom: 1px solid #eadcf7;
-    }
-
-    th {
-        background: #eadcf7;
-        color: #68418c;
-    }
-
-    tr:hover {
-        background: #faf6ff;
-    }
-
-    /* FORMULARIOS */
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 14px;
-        border: 1px solid #d9c2ed;
-        border-radius: 10px;
-        font-size: 14px;
-        background: #fdfaff;
-        color: #49365f;
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: #8958b5;
-        box-shadow: 0 0 5px #d9b8f2;
-    }
-
-    form label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 6px;
-        color: #68418c;
-    }
-
-    /* MENSAJES */
-    .messages {
-        list-style: none;
-        margin-bottom: 18px;
-    }
-
-    .messages li {
-        padding: 13px;
-        border-radius: 10px;
-        margin-bottom: 8px;
-    }
-
-    .messages .success {
-        background: #eee2f8;
-        color: #68418c;
-    }
-
-    .messages .error {
-        background: #ffe4ee;
-        color: #a33b68;
-    }
-
-    /* PIE DE PÁGINA */
-    footer {
-        text-align: center;
-        padding: 25px;
-        color: #927da5;
-        font-size: 14px;
-        margin-top: 30px;
-    }
-
-    /* LISTAS */
-    ul {
-        padding-left: 22px;
-    }
-
-    li {
-        margin-bottom: 8px;
-    }
-
-    /* DISEÑO PARA CELULAR */
-    @media (max-width: 700px) {
-        header {
-            flex-direction: column;
-            gap: 15px;
-            text-align: center;
-        }
-
-        header nav a {
-            display: inline-block;
-            margin: 6px;
-        }
-
-        .container {
-            margin: 20px auto;
-        }
-
-        table {
-            font-size: 12px;
-        }
-
-        th, td {
-            padding: 8px;
-        }
-    }
-</style>
-
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <h1>💜 Papelería Momita ✨</h1>
-        <nav>
-            <a href="{% url 'inicio' %}">Inicio</a>
-            <a href="{% url 'lista_productos' %}">Productos</a>
-            <a href="{% url 'lista_categorias' %}">Categorías</a>
-            <a href="{% url 'lista_clientes' %}">Clientes</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'dashboard' %}">Dashboard</a>
-                <span style="color:#38bdf8;">👤 {{ user.username }}</span>
-                <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger" style="margin-left:10px;">Cerrar sesión</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}">Iniciar sesión</a>
-            {% endif %}
-        </nav>
-    </header>
 
-    <div class="container">
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
+<header class="site-header">
+    <a class="brand" href="{% url 'inicio' %}">
+        <span class="brand-icon">✿</span>
+        <span>
+            Papelería <strong>Momita</strong>
+            <small>Creatividad en cada detalle</small>
+        </span>
+    </a>
+
+    <nav class="main-nav">
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="{% url 'lista_productos' %}">Productos</a>
+        <a href="{% url 'lista_categorias' %}">Categorías</a>
+        <a href="{% url 'lista_clientes' %}">Clientes</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}">Panel</a>
+
+            <span class="user-name">
+                Hola, {{ user.username }}
+            </span>
+
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-outline" type="submit">
+                    Cerrar sesión
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a>
         {% endif %}
+    </nav>
+</header>
 
-        {% block content %}{% endblock %}
-    </div>
+<main class="container">
 
-    <footer>
-        💜 Papelería Momita | Hecho con amor y creatividad ✨
-    </footer>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message {{ message.tags }}">
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+<footer class="site-footer">
+    💜 Papelería Momita · Hecho con creatividad y cariño
+</footer>
+
+<script>
+    document.querySelectorAll('form[data-confirm]').forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            if (!confirm(form.dataset.confirm)) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
-
